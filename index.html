@@ -13,7 +13,9 @@
     :class="divClasses"
     ></div>
   <div class="demo"></div>
-  <div class="demo"></div>
+  <div class="demo" :class="[color, {red: attachRed}]"></div>
+  <hr>
+  <input type="text" v-model="color">
 </div>
 
 <script>
@@ -21,7 +23,8 @@
 
   el: '#app',
   data: {
-    attachRed: false
+    attachRed: false,
+    color: 'green'
   },
 
   computed: {
