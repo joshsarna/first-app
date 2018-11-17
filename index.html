@@ -7,11 +7,13 @@
 <body>
 
 <div id="app">
-  <button @click="counter++">Increase</button>
-  <button @click="counter--">Decrease</button>
-  <p>Counter: {{ counter }}</p>
-  <p>Result: {{ output }}</p>
-  <a :href="link">Google</a>
+  <div 
+    class="demo" 
+    @click="attachRed = !attachRed"
+    :class="{red: attachRed}"
+    ></div>
+  <div class="demo"></div>
+  <div class="demo"></div>
 </div>
 
 <script>
@@ -19,24 +21,7 @@
 
   el: '#app',
   data: {
-    counter: 0,
-    result: '',
-    link: 'http://google.com'
-  },
-
-  computed: {
-    output: function() {
-      return this.counter > 5 ? 'Greater than 5' : 'Smaller than 5'
-    }
-  },
-
-  watch: {
-    counter: function(value) {
-      var vm = this;
-      setTimeout(function() {
-        vm.counter = 0;
-      }, 2000);
-    }
+    attachRed: false
   }
 
   });
@@ -44,3 +29,25 @@
 
 </body>
 </html>
+
+<style type="text/css">
+  .demo {
+    width: 100px;
+    height: 100px;
+    background-color: gray;
+    display: inline-block;
+    margin: 10px;
+  }
+
+  .red {
+    background-color: red;
+  }
+
+  .green {
+    background-color: green;
+  }
+
+  .blue {
+    background-color: blue;
+  }
+</style>
