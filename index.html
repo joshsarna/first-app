@@ -7,8 +7,10 @@
 <body>
 
 <div id="app">
-  <input type="text" v-model="name">
-  <p>{{ name }}</p>
+  <button v-on:click="counter++">Increase</button>
+  <button v-on:click="counter--">Decrease</button>
+  <p>Counter: {{ counter }}</p>
+  <p>Result: {{ output }}</p>
 </div>
 
 <script>
@@ -16,7 +18,13 @@
 
   el: '#app',
   data: {
-    name: 'Josh'
+    counter: 0,
+    result: ''
+  },
+  computed: {
+    output: function() {
+      return this.counter > 5 ? 'Greater than 5' : 'Smaller than 5'
+    }
   }
 
   });
