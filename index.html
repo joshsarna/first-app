@@ -9,11 +9,9 @@
 <body>
 
 <div id="app">
-  <h1 v-once>{{ title }}</h1>
-  <p>{{ sayHello() }} - <a v-bind:href="link">Google</a></p>  
-  <hr>
-  <p v-html="finishedLink"></p>
-  <!-- the above line is not very secure -->
+  <button v-on:click="increase">Click me</button>
+  <p>{{ counter }}</p>
+  <p v-on:mousemove="updateCoordinates">Coordinates: {{ x }} / {{ y }}</p>
 </div>
 
 <script>
@@ -21,15 +19,18 @@
     el: '#app',
     
     data: {
-      title: 'Hello World!',
-      link: 'http://google.com',
-      finishedLink: '<a href="http://google.com">Google</a>'
+      counter: 0,
+      x: 0,
+      y: 0
     },
-    
+
     methods: {
-      sayHello: function() {
-        this.title = 'Hello!'
-        return this.title;
+      increase: function() {
+        this.counter++;
+      },
+      updateCoordinates: function(event) {
+        this.x = event.clientX;
+        this.y = event.clientY;
       }
     }
   });
