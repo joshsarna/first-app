@@ -9,7 +9,11 @@
 <body>
 
 <div id="app">
+  <h1 v-once>{{ title }}</h1>
   <p>{{ sayHello() }} - <a v-bind:href="link">Google</a></p>  
+  <hr>
+  <p v-html="finishedLink"></p>
+  <!-- the above line is not very secure -->
 </div>
 
 <script>
@@ -18,11 +22,13 @@
     
     data: {
       title: 'Hello World!',
-      link: 'http://google.com'
+      link: 'http://google.com',
+      finishedLink: '<a href="http://google.com">Google</a>'
     },
     
     methods: {
       sayHello: function() {
+        this.title = 'Hello!'
         return this.title;
       }
     }
